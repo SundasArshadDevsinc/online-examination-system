@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_21_105654) do
+ActiveRecord::Schema.define(version: 2023_08_21_113713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exams", force: :cascade do |t|
+    t.string "title"
+    t.integer "status"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.integer "question_type"
+    t.text "options"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
